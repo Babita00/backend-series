@@ -88,6 +88,12 @@ backend-series/
 
    The server will start on `http://localhost:3000`.
 
+You can also install nodemon as a development dependency:
+npm install --save-dev nodemon 
+# or using yarn: yarn add nodemon -D
+npm install -g nodemon
+
+
 ## Core Concepts
 
 - **Node.js:** JavaScript runtime built on Chrome's V8 JavaScript engine.
