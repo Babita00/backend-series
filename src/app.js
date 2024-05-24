@@ -2,7 +2,6 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import cors from "cors";
 
-cors = require('cors')// This line is unnecessary as cors is already imported correctly above
 const app = express();//creating an express application
 
 app.use(cors({
@@ -17,4 +16,5 @@ app.use(cookieParser())
 
 
 export { app }
+
 
