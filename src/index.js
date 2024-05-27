@@ -16,35 +16,31 @@ connectDB()
     console.log('MongoDB connection FAILED', err);
   });
 
-/*import express from 'express'
-const app = express()
-    ; (async () => {
-        try {
-            console.log('MongoDB URL:', process.env.MONGODB_URL);
-            console.log('DB Name:', DB_NAME);
-            console.log('Port:', process.env.PORT);
+// import express from 'express';
+// const app = express();
+// (async () => {
+//   try {
+//     console.log('MongoDB URL:', process.env.MONGODB_URL);
+//     console.log('DB Name:', DB_NAME);
+//     console.log('Port:', process.env.PORT);
 
-            await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`)
-            app.on("error", (error) => {
-                console.log("ERROR:our system is not able to talk with databse", error);
-                process.exit(1);
-            })
-            app.listen(process.env.PORT, () => {
-                console.log(`App is listening on port${process.env.PORT}`)
-            })
-        }
+//     await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}`);
+//     app.on('error', (error) => {
+//       console.log('ERROR:our system is not able to talk with databse', error);
+//       process.exit(1);
+//     });
+//     app.listen(process.env.PORT, () => {
+//       console.log(`App is listening on port${process.env.PORT}`);
+//     });
+//   } catch (error) {
+//     console.error('Error:', error);
 
+//     process.exit(1);
+//   }
+// })();
 
-        catch (error) {
-            console.error('Error:', error);
-
-            process.exit(1);
-        }
-    })()
-
-// Error handling middleware
-app.use((err, req, res, next) => {
-    console.error('Express error handler:', err);
-    res.status(500).send('Something went wrong!');
-});
-*/
+// // Error handling middleware
+// app.use((err, req, res, next) => {
+//   console.error('Express error handler:', err);
+//   res.status(500).send('Something went wrong!');
+// });

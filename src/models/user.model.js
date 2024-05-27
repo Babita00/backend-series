@@ -1,7 +1,7 @@
-import mongoose, { Schema } from 'mongoose'
-import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2'
-import jwt from 'jsonwebtoken'
-import bcrypt from 'bcrypt'
+import mongoose, { Schema } from 'mongoose';
+import mongooseAggregatePaginate from 'mongoose-aggregate-paginate-v2';
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 
 const userSchema = new mongoose.Schema(
   {
@@ -43,19 +43,19 @@ const userSchema = new mongoose.Schema(
     },
   },
   { timestamps: true }
-)
+);
 
 userSchema.pre('save', function (next) {
-  if (this.isModified('password')) return next() //password change bhaye matra yo field change garnu
+  if (this.isModified('password')) return next(); //password change bhaye matra yo field change garnu
 
-  this.password = bcrypt.hash(this.password, 10)
-  next()
-}) //this is taken from documentation of mongoose in middleware
+  this.password = bcrypt.hash(this.password, 10);
+  next();
+}); //this is taken from documentation of mongoose in middleware
 
 //checking if password is correct
 userSchema.methods.isPasswordCorrect = async function (password) {
-  return await bcrypt.compare(password, this.password)
-}
+  return await bcrypt.compare(password, this.password);
+};
 
 userSchema.methods.generateAccessToken = async function () {
   try {
@@ -66,13 +66,13 @@ userSchema.methods.generateAccessToken = async function () {
       {
         expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
       }
-    )
-    return token
+    );
+    return token;
   } catch (error) {
-    console.error('Error generating access token:', error)
-    throw error
+    console.error('Error generating access token:', error);
+    throw error;
   }
-}
+};
 userSchema.methods.generateRefreshToken = async function () {
   try {
     // 'this' refers to the current user instance
@@ -82,11 +82,11 @@ userSchema.methods.generateRefreshToken = async function () {
       {
         expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
       }
-    )
-    return token
+    );
+    return token;
   } catch (error) {
-    console.error('Error generating access token:', error)
-    throw error
+    console.error('Error generating access token:', error);
+    throw error;
   }
-}
-export const User = mongoose.model('User', userSchema)
+};
+export const User = mongoose.model('User', userSchema);
