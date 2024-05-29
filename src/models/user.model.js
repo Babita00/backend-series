@@ -41,14 +41,17 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Password is required'],
     },
+    refrehToken: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
 
-userSchema.pre('save', function (next) {
+userSchema.pre('save', async function (next) {
   if (this.isModified('password')) return next(); //password change bhaye matra yo field change garnu
 
-  this.password = bcrypt.hash(this.password, 10);
+  this.password = await bcrypt.hash(this.password, 10);
   next();
 }); //this is taken from documentation of mongoose in middleware
 

@@ -14,8 +14,9 @@ const uploadOnCloudinary = async (localFilePath) => {
       resource_type: 'auto',
       public_id: 'olympic_flag',
     });
-
     console.log('File is uploaed in Cloudinary', response.url);
+    console.log('response is:', response);
+    // fs.unlinkSync(localFilePath);
     return response;
   } catch (error) {
     fs.unlinkSync(localFilePath); //remove the locally saved temoporary file if operation gt failed
